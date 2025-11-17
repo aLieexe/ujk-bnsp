@@ -15,9 +15,7 @@ sudo mv promtool /usr/local/bin/
 sudo mkdir -p /etc/prometheus
 sudo mkdir -p /var/lib/prometheus
 
-# Move other configs
-sudo mv consoles /etc/prometheus/
-sudo mv console_libraries /etc/prometheus/
+# Move configs
 sudo mv prometheus.yml /etc/prometheus/
 
 sudo chown -R prometheus:prometheus /etc/prometheus
@@ -36,9 +34,8 @@ scrape_configs:
 
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['13.213.63.96:9100']
 EOF
-
 
 sudo tee /etc/systemd/system/prometheus.service >/dev/null <<'EOF'
 [Unit]
@@ -65,8 +62,6 @@ sudo systemctl enable --now prometheus.service
 
 cd ..
 
-
-
 # Grafana
 sudo apt-get install -y apt-transport-https software-properties-common wget
 
@@ -77,7 +72,6 @@ sudo apt update
 sudo apt install -y grafana
 
 sudo systemctl enable --now grafana-server
-
 
 # Checks
 sudo systemctl status grafana-server
