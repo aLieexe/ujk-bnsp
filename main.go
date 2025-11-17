@@ -24,6 +24,7 @@ func main() {
 			</head>
 			<body>
 				<h1>RIZKY ALAY HERMAWAN</h1>
+				<p>Hello World</p>
 				<p>Deployment pada AWS EC2</p>
 			</body>
 			</html>
