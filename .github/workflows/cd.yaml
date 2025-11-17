@@ -29,9 +29,9 @@ jobs:
           script: |
             cd ujk-bnsp
             git pull
-            sudo docker stop go-app-container
-            sudo docker rm go-app-container
+            sudo docker stop go-app-container || true
+            sudo docker rm go-app-container || true
             sudo docker build -t go-app .
-            sudo docker run -d -p 5500:5500 go-a
+            sudo docker run -d -p 80:5500 go-a
             
 
